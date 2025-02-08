@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { DashboardNav } from "@/components/dashboard/nav";
+import SupabaseProvider from "@/components/providers/supabase-provider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -28,10 +29,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-background font-sans antialiased`}
       >
-        <div className="relative flex min-h-screen flex-col">
-          <DashboardNav />
-          <div className="flex-1">{children}</div>
-        </div>
+        <SupabaseProvider>
+          <div className="relative flex min-h-screen flex-col">
+            <DashboardNav />
+            <div className="flex-1">{children}</div>
+          </div>
+        </SupabaseProvider>
       </body>
     </html>
   );

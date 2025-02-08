@@ -1,1 +1,0 @@
-[Cursor] fix: update tailwind configuration for shadcn/ui components
