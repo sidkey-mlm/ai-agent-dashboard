@@ -22,11 +22,21 @@ export default function SupabaseProvider({
   const router = useRouter()
 
   useEffect(() => {
+    // Get initial session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null)
+    })
+
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((event, session) => {
-      setUser(session?.user ?? null)
-      router.refresh()
+      const currentUser = session?.user ?? null
+      setUser(currentUser)
+
+      // Only refresh on sign in or sign out
+      if (event === 'SIGNED_IN' || event === 'SIGNED_OUT') {
+        router.refresh()
+      }
     })
 
     return () => {
