@@ -1,7 +1,1 @@
-[Cursor] feat: initialize AI Agent Dashboard
-
-- Set up Next.js project with TypeScript and Tailwind CSS
-- Implement shadcn/ui components and theme
-- Create reusable stats card component
-- Add responsive dashboard layout with navigation
-- Implement overview page with key metrics
+[Cursor] fix: update tailwind configuration for shadcn/ui components
